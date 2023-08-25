@@ -40,16 +40,16 @@ class Player(GameSprite):
     def update_r(self):
         keys_pressed = key.get_pressed()
 
-        if keys_pressed[K_PageUp] and self.rect.y > 0:
+        if keys_pressed[K_UP] and self.rect.y > 0:
             self.rect.y -= self.speed
 
-        if keys_pressed[K_PageDown] and self.rect.y < H - self.size_y:
+        if keys_pressed[K_DOWN] and self.rect.y < H - self.size_y:
             self.rect.y += self.speed
 
 
 player_l = Player('racket.png', 10, W/3, 50, 150, 5)
 
-#player_r = Player('racket.png', 480, W/3, 50, 150, 5)
+player_r = Player('racket.png', 740, W/3, 50, 150, 5)
 
 
 finish = False
@@ -64,8 +64,8 @@ while game:
     player_l.reset()
     player_l.update_l() 
 
-    #player_r.reset()
-    #player_r.update_r()
+    player_r.reset()
+    player_r.update_r()
     
 
     for e in event.get():
