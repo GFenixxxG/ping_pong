@@ -6,7 +6,7 @@ init()
 W = 800
 H = 500
 #Задній фон
-back = (0, 255, 0)
+back = (0, 255, 100)
 #Екран
 window = display.set_mode((W, H))
 display.set_icon(image.load("tenis_ball.png"))
