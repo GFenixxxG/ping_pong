@@ -77,15 +77,15 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
-
+    #Відмальовувуння фону
     window.fill(back)
-
+    #Текст очків
     point_l_txt = font.render(str(player_l_point), 1, (0, 0, 0))
     point_r_txt = font.render(str(player_r_point), 1, (0, 0, 0))
-
+    #Відмальовування тексту
     window.blit(point_l_txt, (725, 25))
     window.blit(point_r_txt, (54, 25))
-
+    #Перевірка чи закінчилась гра
     if not finish:
         time.delay(5)
 
@@ -100,7 +100,7 @@ while game:
         ball.rect.x += speed_x
         ball.rect.y += speed_y
     
-
+        #Перевірки
         if ball.rect.y < 0 or ball.rect.y > H - 75:    
             speed_y *= -1
 
