@@ -9,13 +9,13 @@ H = 500
 player_l_point = 0
 player_r_point = 0
 #
-speed_x = 1
-speed_y = 1
+speed_x = 3
+speed_y = 3
 #Задній фон
-back = (0, 255, 100)
+back = (66, 66, 66)
 #Екран
 window = display.set_mode((W, H))
-display.set_icon(image.load("tenis_ball.png"))
+display.set_icon(image.load("ball_d.png"))
 display.set_caption("PING PONG")
 window.fill(back)
 """FONTS"""
@@ -63,10 +63,10 @@ class Player(GameSprite):
             self.rect.y += self.speed
 
 #Гравці     
-player_l = Player('racket.png', 10, W/3, 50, 150, 5)
-player_r = Player('racket.png', 740, W/3, 50, 150, 5)
+player_l = Player('player_l.png', 10, W/3, 70, 180, 5)
+player_r = Player('player_r.png', 740, W/3, 70, 180, 5)
 
-ball = GameSprite('tenis_ball.png', 200, 200, 75, 75, 1)
+ball = GameSprite('ball_d.png', 200, 200, 75, 75, 1)
 
 #Змінні для гри
 finish = False
@@ -99,7 +99,8 @@ while game:
 
         ball.rect.x += speed_x
         ball.rect.y += speed_y
-            
+    
+
         if ball.rect.y < 0 or ball.rect.y > H - 75:    
             speed_y *= -1
 
@@ -117,6 +118,18 @@ while game:
             finish == True
             ball.rect.x = 200
             ball.rect.y = 200
+
+        if player_l_point >= 5:
+            win_l_txt = font.render("Виграв гравець зліва", 1, (0, 0, 0))
+            window.blit(win_l_txt, (W/2 - 235, 25))
+            finish = True
+
+        if player_r_point >= 5:
+            win_r_txt = font.render("Виграв гравець справа", 1, (0, 0, 0))
+            window.blit(win_r_txt, (W/2 - 235, 25))
+            finish = True
+
+
         #Оновлення екрану
         display.update()
 
